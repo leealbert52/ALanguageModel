@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/930527/7538d11b4b8842be8e7c664d34192650
+bundleId: https://api.rpubs.com/api/v1/document/930527/7538d11b4b8842be8e7c664d34192650
+url: http://rpubs.com/leealbert/930527
+when: 1659894237.1343
+lastSyncTime: 1659894237.13431

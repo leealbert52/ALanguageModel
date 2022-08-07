@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A Simple Language Model</title>
+  <meta charset="utf-8">
+  <meta name="description" content="A Simple Language Model">
+  <meta name="author" content="ALee">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  
+  <hgroup class="auto-fadein">
+    <h1>A Simple Language Model</h1>
+    <h2></h2>
+    <p>ALee<br/></p>
+  </hgroup>
+  
+  <article></article>  
+  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  
+  <hgroup>
+    <h2>The algorithm</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>This simple language model predicts the last word after the user enters a text.
+The training data come from HC Corpora that consists of</p>
+
+<ol>
+<li>US blog postings</li>
+<li>US News</li>
+<li>US twitter messages</li>
+</ol>
+
+<p>These 3 data sources were combined, cleaned to form a corpus for training. The following steps were followed:</p>
+
+<ol>
+<li>Apply basic concept of tidying texts before exploratory analysis begins </li>
+<li>The concepts of unigram, bigram and trigrams using tokenizers</li>
+<li>Generative n-gram language model</li>
+<li>The basic concept of discounting method using Katz Backoff approach</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  
+  <hgroup>
+    <h2>Corpus</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>Literature suggests that it enhance the prediction quality if different types of texts are mixed. Here we are given three types of texts.</p>
+
+<p>Literature suggests the bigger the dataset for training the better the prediction of the model. However, the memory limitation and runtime performance are also important considerations, especially when the language model is to be deployed on small device, such as smartphone.</p>
+
+<p>Literature also suggests that removal of unusual/sparse terms greatly reduce the training data size and does not affect the performance. </p>
+
+<p>We follow these steps, in addition to taking a random sample of 70% from each of the sources so that the prediction can be returned fairly quickly, with a trade off on the prediction accuracy.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  
+  <hgroup>
+    <h2>Instructions</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>The result is given by a Shiny web application. The prediction is given in a form of term-probabilities table such that the term with the highest probability is the prediction.</p>
+
+<p>After the text is entered in the text input box, </p>
+
+<ol>
+<li>The entered text is shown in the main panel of the app</li>
+<li>The text is then preprocessed behind the scene, as the same way the corpus was processed for training the model. The resulting bigram is then displayed, which is used for prediction</li>
+<li>A data table with two columns is rendered. The first column gives the terms, whereas the second column gives the respective probabilities in descending order, with the best prediction on the top</li>
+<li>Several sample texts were given as demo.</li>
+<li>A slight delay for the first time. After that the prediction is returned fairly fast, albeit with not so great accuracy. </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  
+  <hgroup>
+    <h2>Experiences</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>We encounter such challenges:</p>
+
+<ol>
+<li><p>In order to achieve better accuracy for the predictions, a diverse set of texts should be included.</p></li>
+<li><p>We take a random sample of 70% from the three data sources so that the model development process can speed up. The model suffers prediction accuracy somewhat.</p></li>
+<li><p>Language model development is a difficult area and pose greater challenge, especially with smoothing techniques, such as Katz Backoff model and Good-Turing </p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The algorithm'>
+         1
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Corpus'>
+         2
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Instructions'>
+         3
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Experiences'>
+         4
+      </a>
+    </li>
+    
+    </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
